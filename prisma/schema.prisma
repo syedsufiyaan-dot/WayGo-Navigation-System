@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String            @id @default(uuid())
+  name                String
+  email               String?           @unique
+  phoneNumber         String?           @unique
+  passwordHash        String
+  emailVerified       Boolean           @default(false)
+  phoneVerified       Boolean           @default(false)
+  failedLoginAttempts Int               @default(0)
+  lockedUntil         DateTime?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  otpVerifications    OTPVerification[]
+  routeHistory        RouteHistory[]
+  favoriteRoutes      FavoriteRoute[]
+
+  @@index([email])
+  @@index([phoneNumber])
+}
+
+model OTPVerification {
+  id           String    @id @default(uuid())
+  userId       String
+  channel      String    // "EMAIL" | "SMS"
+  purpose      String    // "REGISTRATION" | "LOGIN" | "PASSWORD_RESET"
+  codeHash     String
+  expiresAt    DateTime
+  attemptCount Int       @default(0)
+  usedAt       DateTime?
+  createdAt    DateTime  @default(now())
+
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, purpose])
+}
+
+model Location {
+  id            String          @id @default(uuid())
+  name          String          @unique
+  latitude      Float
+  longitude     Float
+  areaType      String          @default("Transit Hub")
+  active        Boolean         @default(true)
+
+  sourceHistory RouteHistory[]  @relation("SourceLocation")
+  destHistory   RouteHistory[]  @relation("DestLocation")
+  sourceFavs    FavoriteRoute[] @relation("FavSourceLocation")
+  destFavs      FavoriteRoute[] @relation("FavDestLocation")
+
+  @@index([name])
+}
+
+model RouteHistory {
+  id                    String    @id @default(uuid())
+  userId                String
+  sourceLocationId      String
+  destinationLocationId String
+  selectedMode          String    @default("ALL")
+  selectedPreference    String    @default("FASTEST")
+  searchedAt            DateTime  @default(now())
+
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceLocation        Location  @relation("SourceLocation", fields: [sourceLocationId], references: [id], onDelete: Cascade)
+  destinationLocation   Location  @relation("DestLocation", fields: [destinationLocationId], references: [id], onDelete: Cascade)
+
+  @@index([userId, searchedAt])
+}
+
+model FavoriteRoute {
+  id                    String    @id @default(uuid())
+  userId                String
+  sourceLocationId      String
+  destinationLocationId String
+  preferredMode         String    @default("ALL")
+  createdAt             DateTime  @default(now())
+
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceLocation        Location  @relation("FavSourceLocation", fields: [sourceLocationId], references: [id], onDelete: Cascade)
+  destinationLocation   Location  @relation("FavDestLocation", fields: [destinationLocationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sourceLocationId, destinationLocationId])
+  @@index([userId])
+}

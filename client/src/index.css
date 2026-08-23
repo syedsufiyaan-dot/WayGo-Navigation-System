@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-navy: #0F172A;
+    --color-primary-blue: #2563EB;
+    --color-indigo: #3730A3;
+    --color-fastest: #1677FF;
+    --color-cheapest: #059669;
+    --color-shortest: #E11D48;
+  }
+
+  body {
+    @apply font-sans text-slate-800 dark:text-slate-100;
+  }
+}
+
+/* Custom animated map grid background for authentication and hero */
+.bg-map-pattern {
+  background-color: #0b1120;
+  background-image: 
+    radial-gradient(rgba(37, 99, 235, 0.25) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(55, 48, 163, 0.2) 1.5px, #0b1120 1.5px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+}
+
+/* Glowing transit lines in background */
+.transit-glow-line {
+  position: absolute;
+  filter: blur(40px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Leaflet Map customizations */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+
+.dark .leaflet-tile {
+  filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.75);
+}
+
+/* Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
