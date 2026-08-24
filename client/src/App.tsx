@@ -10,21 +10,26 @@ import { DashboardPage } from './pages/DashboardPage.js';
 import { SavedRoutesPage } from './pages/SavedRoutesPage.js';
 import { HistoryPage } from './pages/HistoryPage.js';
 import { AboutPage } from './pages/AboutPage.js';
-import { Navigation } from 'lucide-react';
+import waygoLogo from './waygo-logo.png';
 
 /**
  * Protected Route Wrapper
  * Guarantees that only authenticated users can access the dashboard and tools
  */
-const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
       <div className="min-h-screen bg-waygo-lightBg dark:bg-navy-900 flex flex-col items-center justify-center space-y-4">
-        <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center shadow-xl shadow-blue-500/30 animate-bounce">
-          <Navigation className="w-7 h-7 text-white transform -rotate-45" />
-        </div>
+        <img
+          src={waygoLogo}
+          alt="WayGo logo"
+          className="w-20 h-20 object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.45)] animate-bounce"
+        />
+
         <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
           Loading WayGo Chennai...
         </p>
@@ -39,9 +44,11 @@ const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
   return (
     <div className="min-h-screen flex flex-col bg-waygo-lightBg dark:bg-navy-900 transition-colors duration-200">
       <Navbar />
+
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         {children}
       </main>
+
       <Footer />
     </div>
   );
@@ -66,6 +73,7 @@ export const App: React.FC = () => {
                   </ProtectedLayout>
                 }
               />
+
               <Route
                 path="/saved"
                 element={
@@ -74,6 +82,7 @@ export const App: React.FC = () => {
                   </ProtectedLayout>
                 }
               />
+
               <Route
                 path="/history"
                 element={
@@ -82,6 +91,7 @@ export const App: React.FC = () => {
                   </ProtectedLayout>
                 }
               />
+
               <Route
                 path="/about"
                 element={
