@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import waygoLogo from '../waygo-logo.png';
 import {
-  Navigation,
   Bus,
   Train,
   Zap,
@@ -525,9 +525,11 @@ export const AuthPage: React.FC = () => {
 
       {/* Center Branding Header */}
       <div className="relative z-10 text-center mb-6 max-w-lg mx-auto">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 via-blue-500 to-indigo-600 shadow-xl shadow-blue-500/30 mb-3 border border-white/20 animate-float">
-          <Navigation className="w-8 h-8 text-white transform -rotate-45" />
-        </div>
+        <img
+          src={waygoLogo}
+          alt="WayGo logo"
+          className="w-20 h-20 object-contain mx-auto mb-3 drop-shadow-[0_0_20px_rgba(59,130,246,0.45)] animate-float"
+        />
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
           WayGo
         </h1>
