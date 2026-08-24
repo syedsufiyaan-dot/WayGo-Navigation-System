@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.js';
 import { useToast } from '../components/UI/Toast.js';
+import { TransitBackground } from '../components/UI/TransitBackground.js';
 
 type AuthTab = 'signin' | 'register';
 type OtpPurpose = 'REGISTRATION' | 'LOGIN' | 'PASSWORD_RESET';
@@ -518,10 +519,9 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-map-pattern flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
-      {/* Subtle glowing ambient particles & transit lines */}
-      <div className="transit-glow-line w-96 h-96 bg-blue-600 top-10 left-10 rounded-full" />
-      <div className="transit-glow-line w-80 h-80 bg-indigo-600 bottom-10 right-10 rounded-full" />
+    <div className="min-h-screen flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8 relative isolate overflow-hidden bg-[#030712]">
+      {/* Animated 3D transit background */}
+      <TransitBackground variant="login" />
 
       {/* Center Branding Header */}
       <div className="relative z-10 text-center mb-6 max-w-lg mx-auto">
