@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import waygoLogo from '../waygo-logo.png';
+import loginChennaiBg from '../login-chennai-bg.png';
 import {
   Bus,
   Train,
@@ -520,7 +521,30 @@ export const AuthPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8 relative isolate overflow-hidden bg-[#030712]">
-      {/* Animated 3D transit background */}
+      {/* Cinematic Chennai image with animated 3D depth */}
+      <div className="waygo-login-cinematic-bg" aria-hidden="true">
+        {/* Blurred depth layer */}
+        <div
+          className="waygo-login-bg-blur"
+          style={{
+            backgroundImage: `url(${loginChennaiBg})`,
+          }}
+        />
+
+        {/* Main Chennai skyline layer */}
+        <div
+          className="waygo-login-bg-image"
+          style={{
+            backgroundImage: `url(${loginChennaiBg})`,
+          }}
+        />
+
+        {/* Animated lighting and readability layers */}
+        <div className="waygo-login-bg-light-sweep" />
+        <div className="waygo-login-bg-vignette" />
+      </div>
+
+      {/* Moving routes, station lights and particles */}
       <TransitBackground variant="login" />
 
       {/* Center Branding Header */}
