@@ -5,6 +5,7 @@ import { ThemeProvider } from './context/ThemeContext.js';
 import { ToastProvider } from './components/UI/Toast.js';
 import { Navbar } from './components/UI/Navbar.js';
 import { Footer } from './components/UI/Footer.js';
+import { TransitBackground } from './components/UI/TransitBackground.js';
 import { AuthPage } from './pages/AuthPage.js';
 import { DashboardPage } from './pages/DashboardPage.js';
 import { SavedRoutesPage } from './pages/SavedRoutesPage.js';
@@ -14,7 +15,7 @@ import waygoLogo from './waygo-logo.png';
 
 /**
  * Protected Route Wrapper
- * Guarantees that only authenticated users can access the dashboard and tools
+ * Only authenticated users can access the application.
  */
 const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -23,16 +24,21 @@ const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-waygo-lightBg dark:bg-navy-900 flex flex-col items-center justify-center space-y-4">
-        <img
-          src={waygoLogo}
-          alt="WayGo logo"
-          className="w-20 h-20 object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.45)] animate-bounce"
-        />
+      <div className="min-h-screen relative isolate overflow-hidden bg-slate-50 dark:bg-[#030712] flex items-center justify-center">
+        {/* Subtle animation during authentication check */}
+        <TransitBackground variant="app" />
 
-        <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
-          Loading WayGo Chennai...
-        </p>
+        <div className="relative z-10 flex flex-col items-center justify-center space-y-4">
+          <img
+            src={waygoLogo}
+            alt="WayGo logo"
+            className="w-20 h-20 object-contain drop-shadow-[0_0_24px_rgba(59,130,246,0.55)] animate-bounce"
+          />
+
+          <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
+            Loading WayGo Chennai...
+          </p>
+        </div>
       </div>
     );
   }
@@ -42,14 +48,20 @@ const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-waygo-lightBg dark:bg-navy-900 transition-colors duration-200">
-      <Navbar />
+    <div className="min-h-screen relative isolate overflow-x-hidden bg-slate-50 dark:bg-[#030712] transition-colors duration-200">
+      {/* Subtle animated background for all protected pages */}
+      <TransitBackground variant="app" />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        {children}
-      </main>
+      {/* All website content remains above the animation */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        <Navbar />
 
-      <Footer />
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+          {children}
+        </main>
+
+        <Footer />
+      </div>
     </div>
   );
 };
@@ -61,10 +73,10 @@ export const App: React.FC = () => {
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              {/* Authentication is the first gatekeeper page */}
+              {/* Authentication page */}
               <Route path="/login" element={<AuthPage />} />
 
-              {/* Protected Application Routes */}
+              {/* Protected application routes */}
               <Route
                 path="/"
                 element={
@@ -101,7 +113,7 @@ export const App: React.FC = () => {
                 }
               />
 
-              {/* Fallback to root */}
+              {/* Unknown URLs return to the homepage */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>
