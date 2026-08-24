@@ -611,3 +611,194 @@ html:not(.dark) .waygo-transit-bg--app .waygo-background-overlay {
     display: none;
   }
 }
+/* =========================================================
+   CINEMATIC 3D CHENNAI LOGIN BACKGROUND
+   ========================================================= */
+
+.waygo-login-cinematic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #030712;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.waygo-login-bg-blur,
+.waygo-login-bg-image {
+  position: absolute;
+  inset: -6%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+/* Blurred background depth layer */
+.waygo-login-bg-blur {
+  inset: -10%;
+  opacity: 0.45;
+  filter: blur(22px) saturate(1.2);
+  transform: translateZ(-90px) scale(1.18);
+  animation: waygoLoginBackDepth 20s ease-in-out infinite alternate;
+}
+
+/* Main animated Chennai image */
+.waygo-login-bg-image {
+  filter: saturate(1.12) contrast(1.06) brightness(0.82);
+  animation: waygoLoginCamera 18s ease-in-out infinite alternate;
+}
+
+/* Moving cinematic light */
+.waygo-login-bg-light-sweep {
+  position: absolute;
+  inset: -25%;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(56, 189, 248, 0.1) 47%,
+    rgba(139, 92, 246, 0.08) 53%,
+    transparent 65%
+  );
+  transform: translateX(-45%) rotate(4deg);
+  mix-blend-mode: screen;
+  animation: waygoLoginLightSweep 11s ease-in-out infinite;
+}
+
+/* Dark overlay so login form remains readable */
+.waygo-login-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center 42%,
+      rgba(3, 7, 18, 0.3) 0%,
+      rgba(3, 7, 18, 0.56) 48%,
+      rgba(3, 7, 18, 0.86) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(3, 7, 18, 0.18),
+      rgba(3, 7, 18, 0.4)
+    );
+}
+
+/* Allow the Chennai image to show behind route animation */
+.waygo-transit-bg--login {
+  background: transparent;
+}
+
+.waygo-transit-bg--login .waygo-aurora {
+  opacity: 0.18;
+}
+
+.waygo-transit-bg--login .waygo-perspective-grid {
+  opacity: 0.1;
+}
+
+.waygo-transit-bg--login .waygo-background-overlay {
+  background: radial-gradient(
+    circle at center,
+    rgba(3, 7, 18, 0.12) 0%,
+    rgba(3, 7, 18, 0.25) 55%,
+    rgba(3, 7, 18, 0.52) 100%
+  );
+}
+
+/* Slow 3D camera movement */
+@keyframes waygoLoginCamera {
+  0% {
+    transform:
+      perspective(1200px)
+      translate3d(-1.5%, 1%, 0)
+      rotateX(0.6deg)
+      rotateY(-0.8deg)
+      scale(1.07);
+  }
+
+  50% {
+    transform:
+      perspective(1200px)
+      translate3d(1%, -1%, 32px)
+      rotateX(-0.4deg)
+      rotateY(0.8deg)
+      scale(1.105);
+  }
+
+  100% {
+    transform:
+      perspective(1200px)
+      translate3d(0, -1.8%, 55px)
+      rotateX(-0.8deg)
+      rotateY(-0.3deg)
+      scale(1.13);
+  }
+}
+
+/* Background parallax movement */
+@keyframes waygoLoginBackDepth {
+  from {
+    transform:
+      perspective(1200px)
+      translate3d(-2%, 1%, -90px)
+      scale(1.18);
+  }
+
+  to {
+    transform:
+      perspective(1200px)
+      translate3d(2%, -2%, -35px)
+      scale(1.25);
+  }
+}
+
+/* Light sweep animation */
+@keyframes waygoLoginLightSweep {
+  0%,
+  20% {
+    transform: translateX(-55%) rotate(4deg);
+    opacity: 0;
+  }
+
+  42% {
+    opacity: 0.85;
+  }
+
+  70%,
+  100% {
+    transform: translateX(55%) rotate(4deg);
+    opacity: 0;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .waygo-login-bg-blur,
+  .waygo-login-bg-image {
+    background-position: center bottom;
+  }
+
+  .waygo-login-bg-image {
+    animation-duration: 24s;
+  }
+
+  .waygo-login-bg-light-sweep {
+    opacity: 0.55;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .waygo-login-bg-blur,
+  .waygo-login-bg-image,
+  .waygo-login-bg-light-sweep {
+    animation: none !important;
+  }
+
+  .waygo-login-bg-image {
+    transform: scale(1.08);
+  }
+}
