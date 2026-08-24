@@ -464,7 +464,7 @@ export const DashboardPage: React.FC = () => {
                   <p className="text-base font-bold text-slate-800 dark:text-slate-200">
                     {calculationResult.summary.cheapest.totalTimeMins} mins
                   </p>
-                  <p className="text-[10px] text-slate-400">per person</p>
+                  <p className="text-[10px] text-slate-400">travel time</p>
                 </div>
               </div>
             </div>
@@ -500,7 +500,7 @@ export const DashboardPage: React.FC = () => {
                   <p className="text-base font-bold text-slate-800 dark:text-slate-200">
                     {calculationResult.summary.shortest.totalTimeMins} mins
                   </p>
-                  <p className="text-[10px] text-slate-400">per person</p>
+                  <p className="text-[10px] text-slate-400">travel time</p>
                 </div>
               </div>
             </div>
