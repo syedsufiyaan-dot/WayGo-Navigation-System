@@ -85,6 +85,16 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-tirusulam', name: 'Tirusulam', latitude: 12.9807, longitude: 80.1658, areaType: 'Airport Suburban Railway Station' },
   { id: 'loc-pallavaram', name: 'Pallavaram', latitude: 12.9676, longitude: 80.1491, areaType: 'Suburban Railway Station' },
   { id: 'loc-tambaram-sanatorium', name: 'Tambaram Sanatorium', latitude: 12.9373, longitude: 80.1280, areaType: 'Suburban Railway Station' },
+  { id: 'loc-basin-bridge-junction', name: 'Basin Bridge Junction', latitude: 13.1007, longitude: 80.2718, areaType: 'Suburban Railway Junction' },
+  { id: 'loc-vyasarpadi-jeeva', name: 'Vyasarpadi Jeeva', latitude: 13.1089, longitude: 80.2575, areaType: 'Suburban Railway Station' },
+  { id: 'loc-perambur-carriage-works', name: 'Perambur Carriage Works', latitude: 13.1073, longitude: 80.2389, areaType: 'Suburban Railway Station' },
+  { id: 'loc-perambur-loco-works', name: 'Perambur Loco Works', latitude: 13.1082, longitude: 80.2257, areaType: 'Suburban Railway Station' },
+  { id: 'loc-villivakkam', name: 'Villivakkam', latitude: 13.1090, longitude: 80.2049, areaType: 'Suburban Railway Station' },
+  { id: 'loc-korattur', name: 'Korattur', latitude: 13.1131, longitude: 80.1842, areaType: 'Suburban Railway Station' },
+  { id: 'loc-pattaravakkam', name: 'Pattaravakkam', latitude: 13.1146, longitude: 80.1660, areaType: 'Suburban Railway Station' },
+  { id: 'loc-tirumullaivoyal', name: 'Tirumullaivoyal', latitude: 13.1247, longitude: 80.1387, areaType: 'Suburban Railway Station' },
+  { id: 'loc-annanur', name: 'Annanur', latitude: 13.1164, longitude: 80.1272, areaType: 'Suburban Railway Station' },
+  { id: 'loc-avadi', name: 'Avadi', latitude: 13.1183, longitude: 80.1015, areaType: 'Western Suburban Transit Hub' },
 ];
 
 /**
@@ -158,9 +168,19 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   createEdge('South Suburban EMU', 'Chromepet', 'Tambaram Sanatorium', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Chromepet', 'Tambaram Sanatorium']),
   createEdge('South Suburban EMU', 'Tambaram Sanatorium', 'Tambaram', 'TRAIN', 2.0, 4, 2, 'Every 10 mins', ['Tambaram Sanatorium', 'Tambaram']),
 
-  // West Suburban Line: Central <-> Perambur <-> Ambattur
-  createEdge('West Suburban EMU', 'Chennai Central', 'Perambur', 'TRAIN', 4.9, 10, 5, 'Every 12 mins', ['Chennai Central', 'Basin Bridge', 'Perambur']),
-  createEdge('West Suburban EMU', 'Perambur', 'Ambattur', 'TRAIN', 9.5, 16, 10, 'Every 12 mins', ['Perambur', 'Villivakkam', 'Korattur', 'Pattaravakkam', 'Ambattur']),
+  // Complete operational West Suburban section: Chennai Central <-> Avadi
+  createEdge('West Suburban EMU', 'Chennai Central', 'Basin Bridge Junction', 'TRAIN', 2.0, 5, 2, 'Every 12 mins', ['Chennai Central Suburban', 'Basin Bridge Junction']),
+  createEdge('West Suburban EMU', 'Basin Bridge Junction', 'Vyasarpadi Jeeva', 'TRAIN', 2.0, 3, 2, 'Every 12 mins', ['Basin Bridge Junction', 'Vyasarpadi Jeeva']),
+  createEdge('West Suburban EMU', 'Vyasarpadi Jeeva', 'Perambur', 'TRAIN', 2.0, 3, 2, 'Every 12 mins', ['Vyasarpadi Jeeva', 'Perambur']),
+  createEdge('West Suburban EMU', 'Perambur', 'Perambur Carriage Works', 'TRAIN', 1.0, 2, 2, 'Every 12 mins', ['Perambur', 'Perambur Carriage Works']),
+  createEdge('West Suburban EMU', 'Perambur Carriage Works', 'Perambur Loco Works', 'TRAIN', 1.0, 2, 2, 'Every 12 mins', ['Perambur Carriage Works', 'Perambur Loco Works']),
+  createEdge('West Suburban EMU', 'Perambur Loco Works', 'Villivakkam', 'TRAIN', 2.0, 3, 2, 'Every 12 mins', ['Perambur Loco Works', 'Villivakkam']),
+  createEdge('West Suburban EMU', 'Villivakkam', 'Korattur', 'TRAIN', 3.0, 4, 2, 'Every 12 mins', ['Villivakkam', 'Korattur']),
+  createEdge('West Suburban EMU', 'Korattur', 'Pattaravakkam', 'TRAIN', 1.0, 4, 2, 'Every 12 mins', ['Korattur', 'Pattaravakkam']),
+  createEdge('West Suburban EMU', 'Pattaravakkam', 'Ambattur', 'TRAIN', 2.0, 3, 2, 'Every 12 mins', ['Pattaravakkam', 'Ambattur']),
+  createEdge('West Suburban EMU', 'Ambattur', 'Tirumullaivoyal', 'TRAIN', 2.0, 4, 2, 'Every 12 mins', ['Ambattur', 'Tirumullaivoyal']),
+  createEdge('West Suburban EMU', 'Tirumullaivoyal', 'Annanur', 'TRAIN', 1.0, 3, 2, 'Every 12 mins', ['Tirumullaivoyal', 'Annanur']),
+  createEdge('West Suburban EMU', 'Annanur', 'Avadi', 'TRAIN', 3.0, 4, 2, 'Every 12 mins', ['Annanur', 'Avadi']),
 
   // MRTS Line: Central/Beach <-> Marina Beach <-> Mylapore <-> Adyar <-> Thiruvanmiyur <-> Velachery
   createEdge('MRTS Railway Line', 'Chennai Central', 'Marina Beach', 'TRAIN', 4.0, 8, 5, 'Every 15 mins', ['Chennai Beach/Fort', 'Chepauk (Marina)']),
