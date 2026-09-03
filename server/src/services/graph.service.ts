@@ -120,6 +120,21 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-taramani', name: 'Taramani', latitude: 12.9792, longitude: 80.2436, areaType: 'MRTS & IT Corridor Station' },
   { id: 'loc-perungudi', name: 'Perungudi', latitude: 12.9667, longitude: 80.2373, areaType: 'MRTS & IT Corridor Station' },
   { id: 'loc-puzhuthivakkam', name: 'Puzhuthivakkam', latitude: 12.9720, longitude: 80.2007, areaType: 'MRTS Station' },
+  { id: 'loc-perungalathur', name: 'Perungalathur', latitude: 12.9042, longitude: 80.0946, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-vandalur', name: 'Vandalur', latitude: 12.8928, longitude: 80.0814, areaType: 'Southern Suburban Transit Hub' },
+  { id: 'loc-urapakkam', name: 'Urapakkam', latitude: 12.8673, longitude: 80.0708, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-guduvancheri', name: 'Guduvancheri', latitude: 12.8439, longitude: 80.0607, areaType: 'Southern Suburban Transit Hub' },
+  { id: 'loc-potheri', name: 'Potheri', latitude: 12.8237, longitude: 80.0448, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-kattankulathur', name: 'Kattankulathur', latitude: 12.8157, longitude: 80.0397, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-maraimalai-nagar', name: 'Maraimalai Nagar', latitude: 12.7930, longitude: 80.0251, areaType: 'Southern Industrial & Suburban Hub' },
+  { id: 'loc-singaperumal-koil', name: 'Singaperumal Koil', latitude: 12.7596, longitude: 80.0033, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-paranur', name: 'Paranur', latitude: 12.7333, longitude: 79.9812, areaType: 'Southern Suburban Railway Station' },
+  { id: 'loc-chengalpattu', name: 'Chengalpattu', latitude: 12.6914, longitude: 79.9771, areaType: 'Major Southern Railway Junction' },
+  { id: 'loc-thoraipakkam', name: 'Thoraipakkam', latitude: 12.9416, longitude: 80.2362, areaType: 'OMR IT & Residential Hub' },
+  { id: 'loc-karapakkam', name: 'Karapakkam', latitude: 12.9120, longitude: 80.2280, areaType: 'OMR IT Corridor Hub' },
+  { id: 'loc-navalur', name: 'Navalur', latitude: 12.8458, longitude: 80.2265, areaType: 'OMR IT & Residential Hub' },
+  { id: 'loc-siruseri', name: 'Siruseri', latitude: 12.8230, longitude: 80.2209, areaType: 'SIPCOT IT Park Hub' },
+  { id: 'loc-kelambakkam', name: 'Kelambakkam', latitude: 12.7875, longitude: 80.2209, areaType: 'Southern OMR Transit Hub' },
 ];
 
 /**
@@ -192,6 +207,16 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   createEdge('South Suburban EMU', 'Pallavaram', 'Chromepet', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Pallavaram', 'Chromepet']),
   createEdge('South Suburban EMU', 'Chromepet', 'Tambaram Sanatorium', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Chromepet', 'Tambaram Sanatorium']),
   createEdge('South Suburban EMU', 'Tambaram Sanatorium', 'Tambaram', 'TRAIN', 2.0, 4, 2, 'Every 10 mins', ['Tambaram Sanatorium', 'Tambaram']),
+  createEdge('South Suburban EMU', 'Tambaram', 'Perungalathur', 'TRAIN', 3.0, 6, 2, 'Every 20 mins', ['Tambaram', 'Perungalathur']),
+  createEdge('South Suburban EMU', 'Perungalathur', 'Vandalur', 'TRAIN', 3.0, 5, 2, 'Every 20 mins', ['Perungalathur', 'Vandalur']),
+  createEdge('South Suburban EMU', 'Vandalur', 'Urapakkam', 'TRAIN', 4.0, 6, 2, 'Every 20 mins', ['Vandalur', 'Urapakkam']),
+  createEdge('South Suburban EMU', 'Urapakkam', 'Guduvancheri', 'TRAIN', 3.0, 5, 2, 'Every 20 mins', ['Urapakkam', 'Guduvancheri']),
+  createEdge('South Suburban EMU', 'Guduvancheri', 'Potheri', 'TRAIN', 4.0, 6, 2, 'Every 20 mins', ['Guduvancheri', 'Potheri']),
+  createEdge('South Suburban EMU', 'Potheri', 'Kattankulathur', 'TRAIN', 2.0, 4, 2, 'Every 20 mins', ['Potheri', 'Kattankulathur']),
+  createEdge('South Suburban EMU', 'Kattankulathur', 'Maraimalai Nagar', 'TRAIN', 3.0, 5, 2, 'Every 20 mins', ['Kattankulathur', 'Maraimalai Nagar']),
+  createEdge('South Suburban EMU', 'Maraimalai Nagar', 'Singaperumal Koil', 'TRAIN', 4.0, 6, 2, 'Every 20 mins', ['Maraimalai Nagar', 'Singaperumal Koil']),
+  createEdge('South Suburban EMU', 'Singaperumal Koil', 'Paranur', 'TRAIN', 4.0, 6, 2, 'Every 20 mins', ['Singaperumal Koil', 'Paranur']),
+  createEdge('South Suburban EMU', 'Paranur', 'Chengalpattu', 'TRAIN', 4.0, 7, 2, 'Every 20 mins', ['Paranur', 'Chengalpattu Junction']),
 
   // Complete operational West Suburban section: Chennai Central <-> Avadi
   createEdge('West Suburban EMU', 'Chennai Central', 'Basin Bridge Junction', 'TRAIN', 2.0, 5, 2, 'Every 12 mins', ['Chennai Central Suburban', 'Basin Bridge Junction']),
@@ -254,7 +279,10 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   createEdge('Bus 570 (Express)', 'Vadapalani', 'Ashok Nagar', 'BUS', 2.0, 7, 7, 'Every 10 mins', ['Vadapalani', 'Ashok Pillar']),
   createEdge('Bus 570 (Express)', 'Ashok Nagar', 'Guindy', 'BUS', 4.2, 14, 12, 'Every 10 mins', ['Ashok Pillar', 'CIPET', 'Guindy Kathipara']),
   createEdge('Bus 570 (Express)', 'Guindy', 'Velachery', 'BUS', 5.5, 18, 15, 'Every 8 mins', ['Guindy', 'Checkpost', 'Velachery Bypass']),
-  createEdge('Bus 570 (Express)', 'Velachery', 'Sholinganallur', 'BUS', 11.2, 28, 25, 'Every 10 mins', ['Velachery', 'Perungudi', 'Thoraipakkam', 'Sholinganallur']),
+  createEdge('Bus 570 (Express)', 'Velachery', 'Sholinganallur', 'BUS', 11.2, 28, 25, 'Every 10 mins', ['Velachery', 'Taramani', 'SRP Tools', 'Perungudi', 'Thoraipakkam', 'Karapakkam', 'Sholinganallur']),
+  createEdge('Bus 570 (Express)', 'Sholinganallur', 'Navalur', 'BUS', 7.0, 16, 15, 'Every 10 mins', ['Sholinganallur', 'Semmancheri', 'Navalur']),
+  createEdge('Bus 570 (Express)', 'Navalur', 'Siruseri', 'BUS', 4.0, 10, 8, 'Every 10 mins', ['Navalur', 'Siruseri SIPCOT IT Park']),
+  createEdge('Bus 570 (Express)', 'Siruseri', 'Kelambakkam', 'BUS', 6.0, 14, 12, 'Every 10 mins', ['Siruseri', 'Padur', 'Kelambakkam Bus Station']),
 
   // Route 21G: Central <-> Marina Beach <-> Mylapore <-> Saidapet <-> Guindy <-> Airport <-> Chromepet <-> Tambaram
   createEdge('Bus 21G', 'Chennai Central', 'Marina Beach', 'BUS', 4.2, 15, 10, 'Every 10 mins', ['Central', 'Anna Square', 'Marina Beach']),
@@ -268,7 +296,13 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   // Route 19B: Saidapet <-> Adyar <-> Thiruvanmiyur <-> Sholinganallur
   createEdge('Bus 19B', 'Saidapet', 'Adyar', 'BUS', 4.5, 16, 12, 'Every 12 mins', ['Saidapet', 'Little Mount', 'Adyar Signal']),
   createEdge('Bus 19B', 'Adyar', 'Thiruvanmiyur', 'BUS', 2.5, 9, 8, 'Every 8 mins', ['Adyar', 'Jayanthi', 'Thiruvanmiyur Depot']),
-  createEdge('Bus 19B', 'Thiruvanmiyur', 'Sholinganallur', 'BUS', 10.5, 26, 22, 'Every 10 mins', ['Thiruvanmiyur', 'Kandanchavadi', 'Karapakkam', 'Sholinganallur']),
+  createEdge('Bus 19B', 'Thiruvanmiyur', 'Perungudi', 'BUS', 4.5, 14, 12, 'Every 10 mins', ['Thiruvanmiyur Railway Station', 'SRP Tools', 'Kandanchavadi', 'Perungudi']),
+  createEdge('Bus 19B', 'Perungudi', 'Thoraipakkam', 'BUS', 3.5, 10, 8, 'Every 10 mins', ['Perungudi', 'Thoraipakkam']),
+  createEdge('Bus 19B', 'Thoraipakkam', 'Karapakkam', 'BUS', 3.0, 8, 7, 'Every 10 mins', ['Thoraipakkam', 'Karapakkam']),
+  createEdge('Bus 19B', 'Karapakkam', 'Sholinganallur', 'BUS', 3.2, 9, 8, 'Every 10 mins', ['Karapakkam', 'Sholinganallur']),
+  createEdge('Bus 19B', 'Sholinganallur', 'Navalur', 'BUS', 7.0, 15, 12, 'Every 10 mins', ['Sholinganallur', 'Semmancheri', 'Navalur']),
+  createEdge('Bus 19B', 'Navalur', 'Siruseri', 'BUS', 4.0, 10, 8, 'Every 10 mins', ['Navalur', 'Siruseri IT Park']),
+  createEdge('Bus 19B', 'Siruseri', 'Kelambakkam', 'BUS', 6.0, 14, 10, 'Every 10 mins', ['Siruseri', 'Padur', 'Kelambakkam Bus Station']),
 
   // Route 23C: Anna Nagar <-> Nungambakkam <-> T. Nagar <-> Saidapet <-> Adyar <-> Thiruvanmiyur
   createEdge('Bus 23C', 'Anna Nagar', 'Nungambakkam', 'BUS', 6.0, 22, 16, 'Every 10 mins', ['Anna Nagar West', 'Aminjikarai', 'Sterling Rd', 'Nungambakkam']),
