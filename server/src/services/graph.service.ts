@@ -24,7 +24,7 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-central', name: 'Chennai Central', latitude: 13.0827, longitude: 80.2755, areaType: 'Major Transit Hub' },
   { id: 'loc-egmore', name: 'Egmore', latitude: 13.0784, longitude: 80.2616, areaType: 'Transit Hub' },
   { id: 'loc-annanagar', name: 'Anna Nagar', latitude: 13.0850, longitude: 80.2101, areaType: 'Residential & Commercial' },
-  { id: 'loc-tnagar', name: 'T. Nagar', latitude: 13.0418, longitude: 80.2341, areaType: 'Commercial Hub' },
+  { id: 'loc-tnagar', name: 'T. Nagar', latitude: 13.0418, longitude: 80.2341, areaType: 'Commercial & Suburban Rail Hub' },
   { id: 'loc-adyar', name: 'Adyar', latitude: 13.0012, longitude: 80.2565, areaType: 'Residential Hub' },
   { id: 'loc-guindy', name: 'Guindy', latitude: 13.0067, longitude: 80.2025, areaType: 'Industrial & Transit Hub' },
   { id: 'loc-tambaram', name: 'Tambaram', latitude: 12.9249, longitude: 80.1000, areaType: 'Southern Gateway Transit Hub' },
@@ -75,7 +75,16 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-nandanam', name: 'Nandanam', latitude: 13.0316, longitude: 80.2417, areaType: 'Metro Station' },
   { id: 'loc-little-mount', name: 'Little Mount', latitude: 13.0147, longitude: 80.2247, areaType: 'Metro Station' },
   { id: 'loc-nanganallur-road', name: 'Nanganallur Road', latitude: 12.9999, longitude: 80.1945, areaType: 'Metro Station' },
-  { id: 'loc-meenambakkam-metro', name: 'Meenambakkam', latitude: 12.9877, longitude: 80.1765, areaType: 'Metro Station' },
+  { id: 'loc-meenambakkam-metro', name: 'Meenambakkam', latitude: 12.9877, longitude: 80.1765, areaType: 'Metro & Suburban Rail Station' },
+  { id: 'loc-chennai-beach', name: 'Chennai Beach', latitude: 13.0927, longitude: 80.2927, areaType: 'Suburban Railway Terminus' },
+  { id: 'loc-chennai-fort', name: 'Chennai Fort', latitude: 13.0825, longitude: 80.2848, areaType: 'Suburban Railway Station' },
+  { id: 'loc-chennai-park', name: 'Chennai Park', latitude: 13.0799, longitude: 80.2756, areaType: 'Suburban Railway Interchange' },
+  { id: 'loc-chetpet', name: 'Chetpet', latitude: 13.0714, longitude: 80.2427, areaType: 'Suburban Railway Station' },
+  { id: 'loc-kodambakkam', name: 'Kodambakkam', latitude: 13.0526, longitude: 80.2258, areaType: 'Suburban Railway Station' },
+  { id: 'loc-pazhavanthangal', name: 'Pazhavanthangal', latitude: 12.9896, longitude: 80.1889, areaType: 'Suburban Railway Station' },
+  { id: 'loc-tirusulam', name: 'Tirusulam', latitude: 12.9807, longitude: 80.1658, areaType: 'Airport Suburban Railway Station' },
+  { id: 'loc-pallavaram', name: 'Pallavaram', latitude: 12.9676, longitude: 80.1491, areaType: 'Suburban Railway Station' },
+  { id: 'loc-tambaram-sanatorium', name: 'Tambaram Sanatorium', latitude: 12.9373, longitude: 80.1280, areaType: 'Suburban Railway Station' },
 ];
 
 /**
@@ -129,15 +138,25 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   createEdge('Metro Blue Line', 'Meenambakkam', 'Chennai Airport', 'METRO', 2.4, 4, 3, 'Every 5 mins', ['Meenambakkam', 'Chennai Airport']),
 
   // ===================== SUBURBAN TRAIN LINES =====================
-  // South Suburban Line: Central/Beach <-> Egmore <-> Nungambakkam <-> T. Nagar <-> Saidapet <-> Guindy <-> Airport <-> Chromepet <-> Tambaram
-  createEdge('South Suburban EMU', 'Chennai Central', 'Egmore', 'TRAIN', 2.2, 5, 5, 'Every 10 mins', ['Chennai Central/Park', 'Egmore']),
-  createEdge('South Suburban EMU', 'Egmore', 'Nungambakkam', 'TRAIN', 3.2, 6, 5, 'Every 10 mins', ['Egmore', 'Chetpet', 'Nungambakkam']),
-  createEdge('South Suburban EMU', 'Nungambakkam', 'T. Nagar', 'TRAIN', 2.5, 5, 5, 'Every 10 mins', ['Nungambakkam', 'Kodambakkam', 'Mambalam (T. Nagar)']),
-  createEdge('South Suburban EMU', 'T. Nagar', 'Saidapet', 'TRAIN', 2.1, 4, 5, 'Every 10 mins', ['Mambalam (T. Nagar)', 'Saidapet']),
-  createEdge('South Suburban EMU', 'Saidapet', 'Guindy', 'TRAIN', 2.6, 5, 5, 'Every 10 mins', ['Saidapet', 'Guindy']),
-  createEdge('South Suburban EMU', 'Guindy', 'Chennai Airport', 'TRAIN', 4.8, 8, 5, 'Every 10 mins', ['Guindy', 'St. Thomas Mount', 'Tirusulam (Airport)']),
-  createEdge('South Suburban EMU', 'Chennai Airport', 'Chromepet', 'TRAIN', 4.6, 7, 5, 'Every 10 mins', ['Tirusulam (Airport)', 'Pallavaram', 'Chromepet']),
-  createEdge('South Suburban EMU', 'Chromepet', 'Tambaram', 'TRAIN', 5.2, 9, 5, 'Every 10 mins', ['Chromepet', 'Tambaram Sanatorium', 'Tambaram']),
+  // Complete South Suburban Line: Chennai Beach <-> Tambaram
+  // T. Nagar represents the Mambalam railway station and surrounding T. Nagar area.
+  createEdge('South Suburban EMU', 'Chennai Beach', 'Chennai Fort', 'TRAIN', 2.0, 4, 2, 'Every 10 mins', ['Chennai Beach', 'Chennai Fort']),
+  createEdge('South Suburban EMU', 'Chennai Fort', 'Chennai Park', 'TRAIN', 1.0, 3, 2, 'Every 10 mins', ['Chennai Fort', 'Chennai Park']),
+  createEdge('South Suburban EMU', 'Chennai Park', 'Egmore', 'TRAIN', 1.0, 3, 2, 'Every 10 mins', ['Chennai Park', 'Chennai Egmore']),
+  createEdge('South Suburban EMU', 'Egmore', 'Chetpet', 'TRAIN', 2.0, 4, 2, 'Every 10 mins', ['Chennai Egmore', 'Chetpet']),
+  createEdge('South Suburban EMU', 'Chetpet', 'Nungambakkam', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Chetpet', 'Nungambakkam']),
+  createEdge('South Suburban EMU', 'Nungambakkam', 'Kodambakkam', 'TRAIN', 1.0, 3, 2, 'Every 10 mins', ['Nungambakkam', 'Kodambakkam']),
+  createEdge('South Suburban EMU', 'Kodambakkam', 'T. Nagar', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Kodambakkam', 'Mambalam (T. Nagar)']),
+  createEdge('South Suburban EMU', 'T. Nagar', 'Saidapet', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Mambalam (T. Nagar)', 'Saidapet']),
+  createEdge('South Suburban EMU', 'Saidapet', 'Guindy', 'TRAIN', 1.0, 3, 2, 'Every 10 mins', ['Saidapet', 'Guindy']),
+  createEdge('South Suburban EMU', 'Guindy', 'St. Thomas Mount', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Guindy', 'St. Thomas Mount']),
+  createEdge('South Suburban EMU', 'St. Thomas Mount', 'Pazhavanthangal', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['St. Thomas Mount', 'Pazhavanthangal']),
+  createEdge('South Suburban EMU', 'Pazhavanthangal', 'Meenambakkam', 'TRAIN', 1.0, 3, 2, 'Every 10 mins', ['Pazhavanthangal', 'Meenambakkam']),
+  createEdge('South Suburban EMU', 'Meenambakkam', 'Tirusulam', 'TRAIN', 2.0, 2, 2, 'Every 10 mins', ['Meenambakkam', 'Tirusulam (Airport)']),
+  createEdge('South Suburban EMU', 'Tirusulam', 'Pallavaram', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Tirusulam (Airport)', 'Pallavaram']),
+  createEdge('South Suburban EMU', 'Pallavaram', 'Chromepet', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Pallavaram', 'Chromepet']),
+  createEdge('South Suburban EMU', 'Chromepet', 'Tambaram Sanatorium', 'TRAIN', 2.0, 3, 2, 'Every 10 mins', ['Chromepet', 'Tambaram Sanatorium']),
+  createEdge('South Suburban EMU', 'Tambaram Sanatorium', 'Tambaram', 'TRAIN', 2.0, 4, 2, 'Every 10 mins', ['Tambaram Sanatorium', 'Tambaram']),
 
   // West Suburban Line: Central <-> Perambur <-> Ambattur
   createEdge('West Suburban EMU', 'Chennai Central', 'Perambur', 'TRAIN', 4.9, 10, 5, 'Every 12 mins', ['Chennai Central', 'Basin Bridge', 'Perambur']),
