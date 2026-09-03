@@ -45,6 +45,17 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-ashoknagar', name: 'Ashok Nagar', latitude: 13.0354, longitude: 80.2115, areaType: 'Residential & Metro Hub' },
   { id: 'loc-alandur', name: 'Alandur', latitude: 13.0040, longitude: 80.2014, areaType: 'Metro Interchange Hub' },
   { id: 'loc-washermanpet', name: 'Washermanpet', latitude: 13.1107, longitude: 80.2818, areaType: 'North Chennai Gateway' },
+  { id: 'loc-nehru-park', name: 'Nehru Park', latitude: 13.0796, longitude: 80.2497, areaType: 'Metro Station' },
+  { id: 'loc-kilpauk', name: 'Kilpauk', latitude: 13.0787, longitude: 80.2428, areaType: 'Metro Station' },
+  { id: 'loc-pachaiyappas-college', name: "Pachaiyappa's College", latitude: 13.0756, longitude: 80.2328, areaType: 'Metro Station' },
+  { id: 'loc-shenoy-nagar', name: 'Shenoy Nagar', latitude: 13.0788, longitude: 80.2251, areaType: 'Metro Station' },
+  { id: 'loc-anna-nagar-east', name: 'Anna Nagar East', latitude: 13.0851, longitude: 80.2179, areaType: 'Metro Station' },
+  { id: 'loc-anna-nagar-tower', name: 'Anna Nagar Tower', latitude: 13.0847, longitude: 80.2087, areaType: 'Metro Station' },
+  { id: 'loc-thirumangalam', name: 'Thirumangalam', latitude: 13.0853, longitude: 80.2016, areaType: 'Metro Station' },
+  { id: 'loc-cmbt-metro', name: 'CMBT Metro', latitude: 13.0686, longitude: 80.2037, areaType: 'Metro & Bus Interchange' },
+  { id: 'loc-arumbakkam', name: 'Arumbakkam', latitude: 13.0624, longitude: 80.2115, areaType: 'Metro Station' },
+  { id: 'loc-ekkattuthangal', name: 'Ekkattuthangal', latitude: 13.0170, longitude: 80.2054, areaType: 'Metro Station' },
+  { id: 'loc-st-thomas-mount', name: 'St. Thomas Mount', latitude: 12.9951, longitude: 80.1987, areaType: 'Metro & Railway Interchange' },
 ];
 
 /**
@@ -52,13 +63,23 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
  */
 export const TRANSIT_EDGES: TransitEdge[] = [
   // ===================== METRO LINES =====================
-  // Metro Green Line: Central <-> Egmore <-> Anna Nagar <-> Koyambedu <-> Vadapalani <-> Ashok Nagar <-> Alandur
+  // Metro Green Line: Chennai Central <-> St. Thomas Mount
   createEdge('Metro Green Line', 'Chennai Central', 'Egmore', 'METRO', 2.1, 4, 10, 'Every 5 mins', ['Chennai Central', 'Egmore']),
-  createEdge('Metro Green Line', 'Egmore', 'Anna Nagar', 'METRO', 6.2, 10, 20, 'Every 5 mins', ['Egmore', 'Kilpauk', 'Shenoy Nagar', 'Anna Nagar']),
-  createEdge('Metro Green Line', 'Anna Nagar', 'Koyambedu', 'METRO', 2.8, 5, 10, 'Every 5 mins', ['Anna Nagar', 'Thirumangalam', 'Koyambedu']),
-  createEdge('Metro Green Line', 'Koyambedu', 'Vadapalani', 'METRO', 3.5, 6, 15, 'Every 5 mins', ['Koyambedu', 'Arumbakkam', 'Vadapalani']),
+  createEdge('Metro Green Line', 'Egmore', 'Nehru Park', 'METRO', 1.4, 3, 10, 'Every 5 mins', ['Egmore', 'Nehru Park']),
+  createEdge('Metro Green Line', 'Nehru Park', 'Kilpauk', 'METRO', 1.1, 2, 10, 'Every 5 mins', ['Nehru Park', 'Kilpauk']),
+  createEdge('Metro Green Line', 'Kilpauk', "Pachaiyappa's College", 'METRO', 1.3, 3, 10, 'Every 5 mins', ['Kilpauk', "Pachaiyappa's College"]),
+  createEdge('Metro Green Line', "Pachaiyappa's College", 'Shenoy Nagar', 'METRO', 1.4, 3, 10, 'Every 5 mins', ["Pachaiyappa's College", 'Shenoy Nagar']),
+  createEdge('Metro Green Line', 'Shenoy Nagar', 'Anna Nagar East', 'METRO', 1.2, 3, 10, 'Every 5 mins', ['Shenoy Nagar', 'Anna Nagar East']),
+  createEdge('Metro Green Line', 'Anna Nagar East', 'Anna Nagar Tower', 'METRO', 1.1, 2, 10, 'Every 5 mins', ['Anna Nagar East', 'Anna Nagar Tower']),
+  createEdge('Metro Green Line', 'Anna Nagar Tower', 'Thirumangalam', 'METRO', 1.4, 3, 10, 'Every 5 mins', ['Anna Nagar Tower', 'Thirumangalam']),
+  createEdge('Metro Green Line', 'Thirumangalam', 'Koyambedu', 'METRO', 2.3, 4, 10, 'Every 5 mins', ['Thirumangalam', 'Koyambedu']),
+  createEdge('Metro Green Line', 'Koyambedu', 'CMBT Metro', 'METRO', 1.2, 3, 10, 'Every 5 mins', ['Koyambedu', 'CMBT Metro']),
+  createEdge('Metro Green Line', 'CMBT Metro', 'Arumbakkam', 'METRO', 1.5, 3, 10, 'Every 5 mins', ['CMBT Metro', 'Arumbakkam']),
+  createEdge('Metro Green Line', 'Arumbakkam', 'Vadapalani', 'METRO', 1.8, 4, 10, 'Every 5 mins', ['Arumbakkam', 'Vadapalani']),
   createEdge('Metro Green Line', 'Vadapalani', 'Ashok Nagar', 'METRO', 1.8, 3, 10, 'Every 5 mins', ['Vadapalani', 'Ashok Nagar']),
-  createEdge('Metro Green Line', 'Ashok Nagar', 'Alandur', 'METRO', 3.6, 6, 15, 'Every 5 mins', ['Ashok Nagar', 'Ekkattuthangal', 'Alandur']),
+  createEdge('Metro Green Line', 'Ashok Nagar', 'Ekkattuthangal', 'METRO', 2.2, 4, 10, 'Every 5 mins', ['Ashok Nagar', 'Ekkattuthangal']),
+  createEdge('Metro Green Line', 'Ekkattuthangal', 'Alandur', 'METRO', 1.5, 3, 10, 'Every 5 mins', ['Ekkattuthangal', 'Alandur']),
+  createEdge('Metro Green Line', 'Alandur', 'St. Thomas Mount', 'METRO', 1.6, 3, 10, 'Every 5 mins', ['Alandur', 'St. Thomas Mount']),
 
   // Metro Blue Line: Washermanpet <-> Chennai Central <-> Nungambakkam <-> Saidapet <-> Guindy <-> Alandur <-> Airport
   createEdge('Metro Blue Line', 'Washermanpet', 'Chennai Central', 'METRO', 3.8, 6, 15, 'Every 5 mins', ['Washermanpet', 'Mannadi', 'Chennai Central']),
