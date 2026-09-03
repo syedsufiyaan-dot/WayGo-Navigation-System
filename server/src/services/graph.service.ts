@@ -56,10 +56,30 @@ export const CHENNAI_LOCATIONS: TransitLocation[] = [
   { id: 'loc-arumbakkam', name: 'Arumbakkam', latitude: 13.0624, longitude: 80.2115, areaType: 'Metro Station' },
   { id: 'loc-ekkattuthangal', name: 'Ekkattuthangal', latitude: 13.0170, longitude: 80.2054, areaType: 'Metro Station' },
   { id: 'loc-st-thomas-mount', name: 'St. Thomas Mount', latitude: 12.9951, longitude: 80.1987, areaType: 'Metro & Railway Interchange' },
+  { id: 'loc-wimco-nagar-depot', name: 'Wimco Nagar Depot', latitude: 13.1840, longitude: 80.3090, areaType: 'Metro Depot Station' },
+  { id: 'loc-wimco-nagar', name: 'Wimco Nagar', latitude: 13.1792, longitude: 80.3072, areaType: 'Metro Station' },
+  { id: 'loc-tiruvottriyur', name: 'Tiruvottriyur', latitude: 13.1596, longitude: 80.3011, areaType: 'North Chennai Metro Station' },
+  { id: 'loc-tiruvottriyur-theradi', name: 'Tiruvottriyur Theradi', latitude: 13.1510, longitude: 80.2977, areaType: 'Metro Station' },
+  { id: 'loc-kaladipet', name: 'Kaladipet', latitude: 13.1434, longitude: 80.2963, areaType: 'Metro Station' },
+  { id: 'loc-tollgate', name: 'Tollgate', latitude: 13.1370, longitude: 80.2920, areaType: 'Metro Station' },
+  { id: 'loc-new-washermenpet', name: 'New Washermenpet', latitude: 13.1305, longitude: 80.2891, areaType: 'Metro Station' },
+  { id: 'loc-tondiarpet', name: 'Tondiarpet', latitude: 13.1244, longitude: 80.2888, areaType: 'Metro Station' },
+  { id: 'loc-sir-theagaraya-college', name: 'Sir Theagaraya College', latitude: 13.1161, longitude: 80.2855, areaType: 'Metro Station' },
+  { id: 'loc-mannadi', name: 'Mannadi', latitude: 13.0957, longitude: 80.2860, areaType: 'Metro Station' },
+  { id: 'loc-high-court', name: 'High Court', latitude: 13.0879, longitude: 80.2850, areaType: 'Metro Station' },
+  { id: 'loc-government-estate', name: 'Government Estate', latitude: 13.0696, longitude: 80.2729, areaType: 'Metro Station' },
+  { id: 'loc-lic', name: 'LIC', latitude: 13.0648, longitude: 80.2668, areaType: 'Metro Station' },
+  { id: 'loc-thousand-lights', name: 'Thousand Lights', latitude: 13.0603, longitude: 80.2584, areaType: 'Metro Station' },
+  { id: 'loc-ag-dms', name: 'AG-DMS', latitude: 13.0450, longitude: 80.2489, areaType: 'Metro Station' },
+  { id: 'loc-teynampet', name: 'Teynampet', latitude: 13.0379, longitude: 80.2470, areaType: 'Metro Station' },
+  { id: 'loc-nandanam', name: 'Nandanam', latitude: 13.0316, longitude: 80.2417, areaType: 'Metro Station' },
+  { id: 'loc-little-mount', name: 'Little Mount', latitude: 13.0147, longitude: 80.2247, areaType: 'Metro Station' },
+  { id: 'loc-nanganallur-road', name: 'Nanganallur Road', latitude: 12.9999, longitude: 80.1945, areaType: 'Metro Station' },
+  { id: 'loc-meenambakkam-metro', name: 'Meenambakkam', latitude: 12.9877, longitude: 80.1765, areaType: 'Metro Station' },
 ];
 
 /**
- * Predefined Multimodal Chennai Transit Network Edges
+ * Predefined multimodal Chennai transit network edges
  */
 export const TRANSIT_EDGES: TransitEdge[] = [
   // ===================== METRO LINES =====================
@@ -81,13 +101,32 @@ export const TRANSIT_EDGES: TransitEdge[] = [
   createEdge('Metro Green Line', 'Ekkattuthangal', 'Alandur', 'METRO', 1.5, 3, 10, 'Every 5 mins', ['Ekkattuthangal', 'Alandur']),
   createEdge('Metro Green Line', 'Alandur', 'St. Thomas Mount', 'METRO', 1.6, 3, 10, 'Every 5 mins', ['Alandur', 'St. Thomas Mount']),
 
-  // Metro Blue Line: Washermanpet <-> Chennai Central <-> Nungambakkam <-> Saidapet <-> Guindy <-> Alandur <-> Airport
-  createEdge('Metro Blue Line', 'Washermanpet', 'Chennai Central', 'METRO', 3.8, 6, 15, 'Every 5 mins', ['Washermanpet', 'Mannadi', 'Chennai Central']),
-  createEdge('Metro Blue Line', 'Chennai Central', 'Nungambakkam', 'METRO', 4.5, 7, 20, 'Every 5 mins', ['Chennai Central', 'Govt Estate', 'LIC', 'Nungambakkam AG-DMS']),
-  createEdge('Metro Blue Line', 'Nungambakkam', 'Saidapet', 'METRO', 4.1, 6, 15, 'Every 5 mins', ['Nungambakkam AG-DMS', 'Teynampet', 'Nandanam', 'Saidapet']),
-  createEdge('Metro Blue Line', 'Saidapet', 'Guindy', 'METRO', 2.4, 4, 10, 'Every 5 mins', ['Saidapet', 'Little Mount', 'Guindy']),
-  createEdge('Metro Blue Line', 'Guindy', 'Alandur', 'METRO', 1.5, 3, 10, 'Every 5 mins', ['Guindy', 'Alandur']),
-  createEdge('Metro Blue Line', 'Alandur', 'Chennai Airport', 'METRO', 4.2, 6, 20, 'Every 5 mins', ['Alandur', 'Nanganallur', 'Meenambakkam', 'Chennai Airport']),
+  // Metro Blue Line: Wimco Nagar Depot <-> Chennai Airport
+  createEdge('Metro Blue Line', 'Wimco Nagar Depot', 'Wimco Nagar', 'METRO', 0.5, 2, 3, 'Every 5 mins', ['Wimco Nagar Depot', 'Wimco Nagar']),
+  createEdge('Metro Blue Line', 'Wimco Nagar', 'Tiruvottriyur', 'METRO', 2.6, 3, 3, 'Every 5 mins', ['Wimco Nagar', 'Tiruvottriyur']),
+  createEdge('Metro Blue Line', 'Tiruvottriyur', 'Tiruvottriyur Theradi', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['Tiruvottriyur', 'Tiruvottriyur Theradi']),
+  createEdge('Metro Blue Line', 'Tiruvottriyur Theradi', 'Kaladipet', 'METRO', 1.3, 2, 3, 'Every 5 mins', ['Tiruvottriyur Theradi', 'Kaladipet']),
+  createEdge('Metro Blue Line', 'Kaladipet', 'Tollgate', 'METRO', 1.0, 2, 3, 'Every 5 mins', ['Kaladipet', 'Tollgate']),
+  createEdge('Metro Blue Line', 'Tollgate', 'New Washermenpet', 'METRO', 1.4, 2, 3, 'Every 5 mins', ['Tollgate', 'New Washermenpet']),
+  createEdge('Metro Blue Line', 'New Washermenpet', 'Tondiarpet', 'METRO', 1.2, 2, 3, 'Every 5 mins', ['New Washermenpet', 'Tondiarpet']),
+  createEdge('Metro Blue Line', 'Tondiarpet', 'Sir Theagaraya College', 'METRO', 1.0, 2, 3, 'Every 5 mins', ['Tondiarpet', 'Sir Theagaraya College']),
+  createEdge('Metro Blue Line', 'Sir Theagaraya College', 'Washermanpet', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['Sir Theagaraya College', 'Washermanpet']),
+  createEdge('Metro Blue Line', 'Washermanpet', 'Mannadi', 'METRO', 1.3, 2, 3, 'Every 5 mins', ['Washermanpet', 'Mannadi']),
+  createEdge('Metro Blue Line', 'Mannadi', 'High Court', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['Mannadi', 'High Court']),
+  createEdge('Metro Blue Line', 'High Court', 'Chennai Central', 'METRO', 1.6, 3, 3, 'Every 5 mins', ['High Court', 'Chennai Central']),
+  createEdge('Metro Blue Line', 'Chennai Central', 'Government Estate', 'METRO', 1.4, 3, 3, 'Every 5 mins', ['Chennai Central', 'Government Estate']),
+  createEdge('Metro Blue Line', 'Government Estate', 'LIC', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['Government Estate', 'LIC']),
+  createEdge('Metro Blue Line', 'LIC', 'Thousand Lights', 'METRO', 1.3, 2, 3, 'Every 5 mins', ['LIC', 'Thousand Lights']),
+  createEdge('Metro Blue Line', 'Thousand Lights', 'AG-DMS', 'METRO', 1.6, 3, 3, 'Every 5 mins', ['Thousand Lights', 'AG-DMS']),
+  createEdge('Metro Blue Line', 'AG-DMS', 'Teynampet', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['AG-DMS', 'Teynampet']),
+  createEdge('Metro Blue Line', 'Teynampet', 'Nandanam', 'METRO', 1.2, 2, 3, 'Every 5 mins', ['Teynampet', 'Nandanam']),
+  createEdge('Metro Blue Line', 'Nandanam', 'Saidapet', 'METRO', 1.4, 3, 3, 'Every 5 mins', ['Nandanam', 'Saidapet']),
+  createEdge('Metro Blue Line', 'Saidapet', 'Little Mount', 'METRO', 1.1, 2, 3, 'Every 5 mins', ['Saidapet', 'Little Mount']),
+  createEdge('Metro Blue Line', 'Little Mount', 'Guindy', 'METRO', 1.3, 3, 3, 'Every 5 mins', ['Little Mount', 'Guindy']),
+  createEdge('Metro Blue Line', 'Guindy', 'Alandur', 'METRO', 1.5, 3, 3, 'Every 5 mins', ['Guindy', 'Alandur']),
+  createEdge('Metro Blue Line', 'Alandur', 'Nanganallur Road', 'METRO', 1.4, 3, 3, 'Every 5 mins', ['Alandur', 'Nanganallur Road']),
+  createEdge('Metro Blue Line', 'Nanganallur Road', 'Meenambakkam', 'METRO', 1.8, 3, 3, 'Every 5 mins', ['Nanganallur Road', 'Meenambakkam']),
+  createEdge('Metro Blue Line', 'Meenambakkam', 'Chennai Airport', 'METRO', 2.4, 4, 3, 'Every 5 mins', ['Meenambakkam', 'Chennai Airport']),
 
   // ===================== SUBURBAN TRAIN LINES =====================
   // South Suburban Line: Central/Beach <-> Egmore <-> Nungambakkam <-> T. Nagar <-> Saidapet <-> Guindy <-> Airport <-> Chromepet <-> Tambaram
